@@ -8,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeContent() {
+fun HomeContent(navigateToProfile: (Puppy) -> Unit) {
     val puppies = remember {
         DataProvider.puppyList
     }
@@ -19,7 +19,7 @@ fun HomeContent() {
         items(
             items = puppies,
             itemContent = {
-                PuppyListItem(puppy = it)
+                PuppyListItem(puppy = it, navigateToProfile)
             }
         )
     }

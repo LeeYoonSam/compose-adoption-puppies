@@ -1,5 +1,6 @@
 package com.ys
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,17 +14,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AdoptionpuppiesTheme {
-                MyApp()
+                MyApp {
+                    startActivity(ProfileActivity.newIntent(this, it))
+                }
             }
         }
     }
 }
 
 @Composable
-fun MyApp() {
+fun MyApp(navigateToProfile: (Puppy) -> Unit) {
     Scaffold(
         content = {
-            HomeContent()
+            HomeContent(navigateToProfile = navigateToProfile)
         }
     )
 }
@@ -32,6 +35,6 @@ fun MyApp() {
 @Composable
 fun DefaultPreview() {
     AdoptionpuppiesTheme {
-        MyApp()
+        MyApp {}
     }
 }
