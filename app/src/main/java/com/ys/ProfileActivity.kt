@@ -18,7 +18,7 @@ class ProfileActivity : AppCompatActivity() {
 
         setContent {
             AdoptionpuppiesTheme {
-                Text(text = "Hello ${puppy.title}")
+                ProfileScreen(puppy = puppy)
             }
         }
     }
